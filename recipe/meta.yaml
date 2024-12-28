@@ -14,15 +14,15 @@ build:
     - oxmsg = oxmsg.cli:oxmsg
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 0
+  number: 1
 
 requirements:
   host:
-    - python >=3.9
+    - python {{ python_min }}
     - setuptools >=61.0.0
     - pip
   run:
-    - python >=3.9
+    - python >={{ python_min }}
     - click
     - olefile
     - typing-extensions >=4.9.0
@@ -35,6 +35,7 @@ test:
     - oxmsg --help
   requires:
     - pip
+    - python {{ python_min }}
 
 about:
   home: https://github.com/scanny/python-oxmsg

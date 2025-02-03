@@ -1,5 +1,5 @@
 {% set name = "python-oxmsg" %}
-{% set version = "0.0.1" %}
+{% set version = "0.0.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://pypi.org/packages/source/{{ name[0] }}/{{ name }}/python_oxmsg-{{ version }}.tar.gz
-  sha256: b65c1f93d688b85a9410afa824192a1ddc39da359b04a0bd2cbd3874e84d4994
+  sha256: a6aff4deb1b5975d44d49dab1d9384089ffeec819e19c6940bc7ffbc84775fad
 
 build:
   entry_points:
     - oxmsg = oxmsg.cli:oxmsg
   noarch: python
   script: {{ PYTHON }} -m pip install . -vv --no-deps --no-build-isolation
-  number: 1
+  number: 0
 
 requirements:
   host:
@@ -22,6 +22,7 @@ requirements:
     - setuptools >=61.0.0
     - pip
   run:
+    - typing_extensions >=4.9.0
     - python >={{ python_min }}
     - click
     - olefile
